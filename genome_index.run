@@ -1,0 +1,12 @@
+#!/bin/bash
+
+#SBATCH -p short 		# partition name
+#SBATCH -t 0-3:00 		# hours:minutes runlimit after which job will be killed
+#SBATCH -c 8
+#SBATCH --mem 32G
+#SBATCH -o %j.out			# File to which standard out will be written
+#SBATCH -e %j.err
+
+module load gcc star/2.7.9a
+
+STAR --runThreadN 8 --runMode genomeGenerate --genomeDir /home/vrv983/exosome_project/reference/genome_indices --genomeFastaFiles /n/groups/shared_databases/igenome/Homo_sapiens/UCSC/Homo_sapiens/UCSC/hg38/Sequence/WholeGenomeFasta/genome.fa --sjdbGTFfile /n/groups/shared_databases/igenome/Homo_sapiens/UCSC/Homo_sapiens/UCSC/hg38/Annotation/Genes/genes.gtf --sjdbOverhang 99

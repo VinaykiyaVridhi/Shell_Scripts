@@ -1,0 +1,26 @@
+#!/bin/bash -l
+
+#SBATCH -c 8
+#SBATCH -t 0-02:00
+#SBATCH --mem=32G
+#SBATCH -p short
+
+#$ -P vrv983
+
+source /etc/bashrc
+
+#Load STAR into the environment
+module load gcc star/2.7.9a
+
+#Perform STAR against hg38 reference genome
+#readFilesCommand zcat to uncompress  fastq.gz files
+#outSAMtype tis to specify the output file type
+#readFilesIn input our sample fastq.gz files
+#outFileNamePrefix to add a prefix to the output file
+#outFilterType bySJout is done to reduce the spurious junctions
+#alignSJDBoverhangMin is for the minimum overhang of annotated junctions
+#alignSJoverhangMin is for the minimum overhang of unannotated junctions
+#quantMode TranscriptomeSAM for rsem input
+
+STAR --readFilesIn /home/vrv983/exosome_project/trimdata_results/154_P26_Pca2_exo_D7_C_S65_L002_R1_001_val_1.fq.gz /home/vrv983/exosome_project/trimdata_results/154_P26_Pca2_exo_D7_C_S65_L002_R2_001_val_2.fq.gz --genomeDir /home/vrv983/exosome_project/reference/genome_indices --runThreadN 8 --readFilesCommand zcat --outSAMtype BAM SortedByCoordinate --quantMode TranscriptomeSAM --outFileNamePrefix /home/vrv983/exosome_project/STAR_output/results_18 --outFilterType BySJout --alignSJDBoverhangMin 1 --alignSJoverhangMin 8
+

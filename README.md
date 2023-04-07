@@ -1,1 +1,4 @@
-# R_Programming
+GitHub repository contains a collection of R programming and Bash scripts used to perform a pipeline of RNA-seq analysis. The pipeline is designed to process raw RNA-seq data, perform quality control, map reads to a reference genome, quantify gene expression, and perform differential expression analysis.
+The R programming scripts include packages such as DESeq2 and edgeR for differential expression analysis. The Bash scripts are used to automate the processing of raw data and the execution of R scripts.
+
+The pipeline typically begins with the preprocessing of raw RNA-seq data, including trimming, filtering, and quality control. The reads are then mapped to a reference genome using tools such as STAR or HISAT2, and gene expression is quantified using featureCounts or HTSeq. Differential expression analysis is performed using statistical methods such as DESeq2 or edgeR, which can identify genes that are differentially expressed between different conditions or treatments.
